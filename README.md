@@ -9,8 +9,23 @@ Prever se um arquivo de código será modificado na próxima release utilizando 
 - `modelos/` - Modelos treinados e binários
 - `api/` - Serviço para consumir o modelo via API
 - `requisitos.txt` - Dependências do projeto
-
+- `Python 3.11.9` - Versão do python
 ## Como rodar
 1. Instalar dependências:
    ```bash
    pip install -r requirements.txt
+
+   
+2. Ative o ambiente virtual:
+   ```Windows PowerShell
+   & "venv/Scripts/Activate.ps1"
+
+ ```Windows CMD
+   venv\Scripts\activate.bat
+```
+
+3. Inicie a API:
+   ```bash
+   Inicie a API:
+   
+
