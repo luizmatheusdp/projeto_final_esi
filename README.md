@@ -13,4 +13,4 @@ Prever se um arquivo de código será modificado na próxima release utilizando 
 ## Como rodar
 1. Instalar dependências:
    ```bash
-   pip install -r requisitos.txt
+   pip install -r requirements.txt
