@@ -17,15 +17,24 @@ Prever se um arquivo de código será modificado na próxima release utilizando 
 
    
 2. Ative o ambiente virtual:
-   ```Windows PowerShell
+   ```bash
+   Windows PowerShell
    & "venv/Scripts/Activate.ps1"
 
- ```Windows CMD
-   venv\Scripts\activate.bat
-```
 
 3. Inicie a API:
    ```bash
-   Inicie a API:
+   python api/app.py
+
+4. Enquanto a API estiver rodando, abra outro terminal e execute:
+   ```bash
+   python api/teste_api.py
+
+Exemplo de sáida:
+```yaml
+   Status code: 200
+   Resultado: {'mudanca_prevista': 1}
+
+
    
 
