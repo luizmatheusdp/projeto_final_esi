@@ -8,9 +8,9 @@ Prever se um arquivo de código será modificado na próxima release utilizando 
 - `notebooks/` - Notebooks de análise e treino de modelo
 - `modelos/` - Modelos treinados e binários
 - `api/` - Serviço para consumir o modelo via API
-- `requirements.txt` - Dependências do projeto
+- `requisitos.txt` - Dependências do projeto
 
 ## Como rodar
 1. Instalar dependências:
    ```bash
-   pip install -r requirements.txt
+   pip install -r requisitos.txt
