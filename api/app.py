@@ -1,1 +1,22 @@
-{"nbformat":4,"nbformat_minor":0,"metadata":{"colab":{"provenance":[],"authorship_tag":"ABX9TyO21t5s4y6bPnFBSyt9bQvp"},"kernelspec":{"name":"python3","display_name":"Python 3"},"language_info":{"name":"python"}},"cells":[{"cell_type":"code","execution_count":null,"metadata":{"id":"vltcMESRPTUy"},"outputs":[],"source":["from fastapi import FastAPI\n","import joblib\n","import pandas as pd\n","\n","app = FastAPI(\n","    title=\"API - Predição de Mudança de Software\",\n","    description=\"Prediz se um arquivo de código será modificado na próxima release\",\n","    version=\"1.0\"\n",")\n","\n","# Carregar modelo treinado\n","modelo = joblib.load(\"../modelo/modelo_pms.pkl\")\n","\n","@app.get(\"/\")\n","def home():\n","    return {\"mensagem\": \"API de Predição de Mudança de Software ativa!\"}\n","\n","@app.post(\"/predizer\")\n","def predizer(dados: dict):\n","    \"\"\"\n","    Espera um JSON com as métricas:\n","    {\n","        \"num_commits\": 5,\n","        \"adicoes\": 120,\n","        \"remocoes\": 40\n","    }\n","    \"\"\"\n","\n","    df = pd.DataFrame([dados])\n","    predicao = modelo.predict(df)[0]\n","\n","    return {\n","        \"predicao\": int(predicao),\n","        \"descricao\": \"Arquivo será alterado\" if predicao == 1 else \"Arquivo não será alterado\"\n","    }\n"]}]}
+from flask import Flask, request, jsonify
+import joblib
+import pandas as pd
+
+app = Flask(__name__)
+
+# Carregar modelo treinado
+modelo = joblib.load("modelos/modelo_pms.pkl")
+
+@app.route("/")
+def home():
+    return "API de Predição de Mudança de Software está rodando!"
+
+@app.route("/predicao", methods=["POST"])
+def predicao():
+    dados = request.json
+    df = pd.DataFrame([dados])
+    pred = modelo.predict(df)
+    return jsonify({"mudanca_prevista": int(pred[0])})
+
+if __name__ == "__main__":
+    app.run(debug=True)
