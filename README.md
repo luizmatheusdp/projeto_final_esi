@@ -18,8 +18,7 @@ Prever se um arquivo de código será modificado na próxima release utilizando 
    
 2. Ative o ambiente virtual:
    ```bash
-   Windows PowerShell
-   & "venv/Scripts/Activate.ps1"
+   "venv/Scripts/Activate.ps1"
 
 
 3. Inicie a API:
